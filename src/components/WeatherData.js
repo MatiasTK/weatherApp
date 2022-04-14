@@ -85,56 +85,60 @@ export default function WeatherData(props) {
           </div>
         </div>
         <div
-        className={
-          settings.info === "Minimal" ? "hidden" : "flex flex-col items-center mt-16 pb-5 w-full"
-        }
-      >
-        <h1 className="text-center text-2xl mb-5">Weather Details</h1>
-        <table className="table w-6/12">
-          <tbody>
-            <tr>
-              <td>Max Temperature</td>
-              <td>
-                {settings.temp === "Celsius"
-                  ? parseInt(weather.main.temp_max) + "°C"
-                  : parseInt(celsiusToFarenheit(weather.main.temp_max)) + "°F"}
-              </td>
-            </tr>
-            <tr>
-              <td>Min Temperature</td>
-              <td>
-                {settings.temp === "Celsius"
-                  ? parseInt(weather.main.temp_min) + "°C"
-                  : parseInt(celsiusToFarenheit(weather.main.temp_min)) + "°F"}
-              </td>
-            </tr>
-            <tr>
-              <td>Pressure</td>
-              <td>{weather.main.pressure + " hPa"}</td>
-            </tr>
-            <tr>
-              <td>Humidity</td>
-              <td>{weather.main.humidity + "%"}</td>
-            </tr>
-            <tr>
-              <td>Wind Speed</td>
-              <td>{weather.wind.speed + " m/s"}</td>
-            </tr>
-            <tr>
-              <td>Wind Direction</td>
-              <td>{weather.wind.deg + " deg"}</td>
-            </tr>
-            <tr>
-              <td>Sunrise</td>
-              <td>{unixToDate(weather.sys.sunrise)}</td>
-            </tr>
-            <tr>
-              <td>Sunset</td>
-              <td>{unixToDate(weather.sys.sunset)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          className={
+            settings.info === "Minimal"
+              ? "hidden"
+              : "flex flex-col items-center mt-16 pb-5 w-full"
+          }
+        >
+          <h1 className="text-center text-2xl mb-5">Weather Details</h1>
+          <table className="table w-6/12">
+            <tbody>
+              <tr>
+                <td>Max Temperature</td>
+                <td>
+                  {settings.temp === "Celsius"
+                    ? parseInt(weather.main.temp_max) + "°C"
+                    : parseInt(celsiusToFarenheit(weather.main.temp_max)) +
+                      "°F"}
+                </td>
+              </tr>
+              <tr>
+                <td>Min Temperature</td>
+                <td>
+                  {settings.temp === "Celsius"
+                    ? parseInt(weather.main.temp_min) + "°C"
+                    : parseInt(celsiusToFarenheit(weather.main.temp_min)) +
+                      "°F"}
+                </td>
+              </tr>
+              <tr>
+                <td>Pressure</td>
+                <td>{weather.main.pressure + " hPa"}</td>
+              </tr>
+              <tr>
+                <td>Humidity</td>
+                <td>{weather.main.humidity + "%"}</td>
+              </tr>
+              <tr>
+                <td>Wind Speed</td>
+                <td>{weather.wind.speed + " m/s"}</td>
+              </tr>
+              <tr>
+                <td>Wind Direction</td>
+                <td>{weather.wind.deg + " deg"}</td>
+              </tr>
+              <tr>
+                <td>Sunrise</td>
+                <td>{unixToDate(weather.sys.sunrise)}</td>
+              </tr>
+              <tr>
+                <td>Sunset</td>
+                <td>{unixToDate(weather.sys.sunset)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

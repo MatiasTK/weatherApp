@@ -8,6 +8,10 @@ export default function Settings(props) {
   const setSettings = props.setSettings;
   const changeBackground = props.changeBackground;
 
+  React.useEffect(() => {
+    changeBackground();
+  }, [changeBackground]);
+
   const handleCustomLocationBtn = async () => {
     const input = document.getElementById("custom-location");
     await fetch(
@@ -26,38 +30,37 @@ export default function Settings(props) {
             progress: undefined,
             theme: "colored",
           });
-        }else{
-            setWeather(result);
-            changeBackground();
-            toast.success("City changed successfully 😄", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
-            setSettings({...settings, customCity: input.value})
+        } else {
+          setWeather(result);
+          toast.success("City changed successfully 😄", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+          setSettings({ ...settings, customCity: input.value });
         }
       });
-
   };
 
   const handleTempChange = (e) => {
     const newTemp = e.target.value;
-    setSettings({...settings, temp: newTemp})
-  }
+    setSettings({ ...settings, temp: newTemp });
+  };
 
   const handleDetailChange = () => {
-    const newInfo = settings.info === 'Detailed' ? 'Minimal' : 'Detailed';
-    setSettings({...settings, info: newInfo});
-  }
+    const newInfo = settings.info === "Detailed" ? "Minimal" : "Detailed";
+    setSettings({ ...settings, info: newInfo });
+  };
 
   const disableCustomLocation = async () => {
-    setSettings({...settings, customCity: 'Default'});
-  }
+    setSettings({ ...settings, customCity: "Default" });
+    changeBackground();
+  };
 
   return (
     <div>
@@ -66,7 +69,7 @@ export default function Settings(props) {
         <select
           className="select select-info w-full"
           defaultValue={"Temperature Unit"}
-          onChange={e => handleTempChange(e)}
+          onChange={(e) => handleTempChange(e)}
         >
           <option disabled>Temperature Unit</option>
           <option> Celsius </option>
@@ -91,7 +94,12 @@ export default function Settings(props) {
             >
               <p>SET</p>
             </button>
-            <button className="btn btn-square btn-accent px-16" onClick={() => disableCustomLocation()}>Use geolocation</button>
+            <button
+              className="btn btn-square btn-accent px-16"
+              onClick={() => disableCustomLocation()}
+            >
+              Use geolocation
+            </button>
           </div>
         </div>
       </div>
@@ -99,7 +107,12 @@ export default function Settings(props) {
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Detailed weather</span>
-            <input type="checkbox" className="toggle" onChange={() => handleDetailChange()} checked={settings.info === 'Detailed' ? true : false}/>
+            <input
+              type="checkbox"
+              className="toggle"
+              onChange={() => handleDetailChange()}
+              checked={settings.info === "Detailed" ? true : false}
+            />
           </label>
         </div>
       </div>
