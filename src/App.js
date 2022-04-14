@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar";
 import WeatherData from "./components/WeatherData";
-import config from './config.json';
+import config from "./config.json";
 
 const BGCOLOR = "#282C34";
 const GREY = "#ABB2BF";
@@ -86,13 +86,15 @@ export default function App() {
     fetchData();
 
     localStorage.setItem("Settings", JSON.stringify(settings));
+    changeBackground();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings, userPosition.latitude, userPosition.longitude]);
 
   const changeBackground = () => {
-    if(weather.length === 0){
+    if (weather.length === 0) {
       return;
     }
-    console.log(weather);
+
     const weatherCondition = weather.weather[0].main;
     const background = document.getElementById("background");
     const backgroundBackdrop = document.getElementById("background-backdrop");
@@ -111,13 +113,13 @@ export default function App() {
       background.classList.add("bg-[url(./img/rain.jpg)]");
     } else if (weatherCondition === "Clear") {
       background.classList.add("bg-[url(./img/clear.jpg)]");
-    }else if(weatherCondition === 'Clouds') {
+    } else if (weatherCondition === "Clouds") {
       background.classList.add("bg-[url(./img/cloud.jpg)]");
-    }else if(weatherCondition === 'Thunderstorm'){
+    } else if (weatherCondition === "Thunderstorm") {
       background.classList.add("bg-[url(./img/thunderstorm.jpg)]");
-    }else if(weatherCondition === 'Drizzle'){
+    } else if (weatherCondition === "Drizzle") {
       background.classList.add("bg-[url(./img/drizzle.jpg)]");
-    }else if(weatherCondition === 'Snow'){
+    } else if (weatherCondition === "Snow") {
       background.classList.add("bg-[url(./img/snow.jpg)]");
     }
   };
