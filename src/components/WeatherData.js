@@ -37,8 +37,8 @@ export default function WeatherData(props) {
   };
 
   return (
-    <div className="h-screen">
-      <div className="flex flex-col items-center py-16 h-full justify-center">
+    <div className="h-full">
+      <div className="flex flex-col items-center pt-16 min-h-[38rem] justify-center">
         <div>
           <div className="flex gap-2 mb-5">
             <FontAwesomeIcon icon="fa-solid fa-location-dot" size="2x" />
@@ -86,7 +86,7 @@ export default function WeatherData(props) {
         </div>
         <div
         className={
-          settings.info === "Minimal" ? "hidden" : "flex flex-col items-center mt-16 w-full"
+          settings.info === "Minimal" ? "hidden" : "flex flex-col items-center mt-16 pb-5 w-full"
         }
       >
         <h1 className="text-center text-2xl mb-5">Weather Details</h1>

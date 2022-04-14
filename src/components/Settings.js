@@ -6,6 +6,7 @@ export default function Settings(props) {
   const setWeather = props.setWeather;
   const settings = props.settings;
   const setSettings = props.setSettings;
+  const changeBackground = props.changeBackground;
 
   const handleCustomLocationBtn = async () => {
     const input = document.getElementById("custom-location");
@@ -27,6 +28,7 @@ export default function Settings(props) {
           });
         }else{
             setWeather(result);
+            changeBackground();
             toast.success("City changed successfully 😄", {
               position: "top-right",
               autoClose: 5000,
@@ -37,10 +39,10 @@ export default function Settings(props) {
               progress: undefined,
               theme: "colored",
             });
+            setSettings({...settings, customCity: input.value})
         }
       });
 
-    setSettings({...settings, customCity: input.value})
   };
 
   const handleTempChange = (e) => {
@@ -97,7 +99,7 @@ export default function Settings(props) {
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Detailed weather</span>
-            <input type="checkbox" className="toggle" onChange={() => handleDetailChange()}/>
+            <input type="checkbox" className="toggle" onChange={() => handleDetailChange()} checked={settings.info === 'Detailed' ? true : false}/>
           </label>
         </div>
       </div>

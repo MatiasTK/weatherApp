@@ -1,7 +1,6 @@
 # To-do
 ----
-* [x] Custom search bar
-* [x] Change Farenheit/Celsius
-* [ ] More detailed data
-* [ ] More settings -> Show detailed data ( min temps, max temps, etc... )
-* [ ] Redesign ???
+* [x] Detailed weather switch bug
+* [x] Background color
+* [x] Background segun el tiempo
+* [ ] Hide api key -> https://gist.github.com/derzorngottes/3b57edc1f996dddcab25

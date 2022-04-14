@@ -16,7 +16,7 @@ export default function Navbar(props) {
         <input type="checkbox" id="my-modal" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box">
-            <Settings setWeather={props.setWeather} API_KEY={props.API_KEY} settings={props.settings} setSettings={props.setSettings}/>
+            <Settings setWeather={props.setWeather} API_KEY={props.API_KEY} settings={props.settings} setSettings={props.setSettings} changeBackground={props.changeBackground}/>
             <div className="modal-action">
               <label htmlFor="my-modal" className="btn">
                 Go back
